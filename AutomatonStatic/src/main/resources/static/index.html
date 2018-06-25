@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Automaton</title>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/draggable.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body>
+    <svg>
+        <defs>
+            <marker id="arrow"
+                    viewBox="0 0 10 10"
+                    refX="5" refY="5"
+                    markerWidth="6" markerHeight="6"
+                    orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" cursor="pointer"/>
+            </marker>
+        </defs>
+        <path stroke="black"
+              d="M0 10 L50 10 L50 100 L100 100"
+              fill="none"
+              marker-end="url(#arrow)"
+        />
+    </svg>
+    <div>
+        <div class="jsDraggableForm" style="background-color: #eeeeee; display: inline-block; position: absolute;">
+            <div class="jsDraggable" style="background-color: lightgray; cursor: move">
+                Drag here
+            </div>
+            <div>
+                Content 1
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="jsDraggableForm" style="background-color: #eeeeee; display: inline-block; position: absolute;">
+            <div class="jsDraggable" style="background-color: lightgray; cursor: move">
+                Drag here
+            </div>
+            <div>
+                Content 2
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    //$('body').on('contextmenu', '#canvas', function(e){ onClick(e); return false; });
+    window.onload = main;
+</script>
+</html>
