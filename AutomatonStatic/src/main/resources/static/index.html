@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Automaton</title>
+    <link rel="stylesheet" href="css/style.css">
     <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/movable.js"></script>
+    <script src="js/connector.js"></script>
     <script src="js/draggable.js"></script>
     <script src="js/main.js"></script>
 </head>
@@ -11,37 +14,34 @@
     <svg>
         <defs>
             <marker id="arrow"
-                    viewBox="0 0 10 10"
+                    viewBox="-5 0 10 10"
                     refX="5" refY="5"
                     markerWidth="6" markerHeight="6"
                     orient="auto-start-reverse">
-                    <path d="M 0 0 L 10 5 L 0 10 z" cursor="pointer"/>
+                    <path d="M -5 0 L 5 5 L -5 10 z" cursor="pointer"/>
             </marker>
         </defs>
         <path stroke="black"
-              d="M0 10 L50 10 L50 100 L100 100"
-              fill="none"
+              stroke-width="2"
               marker-end="url(#arrow)"
+              fill="none"
+              id="connector"
         />
     </svg>
-    <div>
-        <div class="jsDraggableForm" style="background-color: #eeeeee; display: inline-block; position: absolute;">
-            <div class="jsDraggable" style="background-color: lightgray; cursor: move">
-                Drag here
-            </div>
-            <div>
-                Content 1
-            </div>
+    <div class="jsDraggableForm" style="background-color: #eeeeee; display: inline-block; position: absolute;">
+        <div class="jsDraggable" style="background-color: lightgray; cursor: move">
+            Drag here
+        </div>
+        <div class="jsMovable" id="from">
+            Content 1
         </div>
     </div>
-    <div>
-        <div class="jsDraggableForm" style="background-color: #eeeeee; display: inline-block; position: absolute;">
-            <div class="jsDraggable" style="background-color: lightgray; cursor: move">
-                Drag here
-            </div>
-            <div>
-                Content 2
-            </div>
+    <div class="jsDraggableForm" style="background-color: #eeeeee; display: inline-block; position: absolute;">
+        <div class="jsDraggable" style="background-color: lightgray; cursor: move">
+            Drag here
+        </div>
+        <div class="jsMovable" id="to">
+            Content 2
         </div>
     </div>
 </body>

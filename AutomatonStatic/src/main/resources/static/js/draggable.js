@@ -4,7 +4,8 @@
     var PLUGIN_NAME = 'draggable';
 
     class Drag {
-        constructor($form, $draggable) {
+        constructor(context, $form, $draggable, options) {
+            this.context = context;
             this.$form = $form;
             this.$draggable = $draggable;
             this.x1 = 0;
@@ -12,11 +13,11 @@
             this.x2 = 0;
             this.y2 = 0;
 
-             if (this.$draggable) {
-                 this.$draggable.mousedown(this.dragMouseDown.bind(this));
-             } else {
-                 this.$form.mousedown(this.dragMouseDown.bind(this));
-             }
+            if (this.$draggable) {
+                this.$draggable.mousedown(this.dragMouseDown.bind(this));
+            } else {
+                this.$form.mousedown(this.dragMouseDown.bind(this));
+            }
         }
 
         dragMouseDown(e) {
@@ -41,6 +42,8 @@
 
             var offset = this.$form.offset();
             this.$form.css({top: (offset.top - this.y1) + 'px', left: (offset.left - this.x1) + 'px'});
+
+            this.$form.find('.jsMovable').movable('move', this.$form);
         }
 
         closeDragElement() {
@@ -58,11 +61,7 @@
                     var data = $form.data(PLUGIN_NAME);
 
                     if (!data) {
-                        $(this).data(PLUGIN_NAME, {
-                            form : $form,
-                            draggable : $draggable
-                        });
-                        new Drag($form, $draggable);
+                        $(this).data(PLUGIN_NAME, new Drag(this, $form, $draggable, options));
                     }
                }
             );
@@ -73,7 +72,7 @@
         if (methods[method]) {
             return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
         } else if (typeof method === 'object' || !method) {
-            return methods.init.apply( this, arguments );
+            return methods.init.apply(this, arguments);
         }
     };
 })(jQuery);
